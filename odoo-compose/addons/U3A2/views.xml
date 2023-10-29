@@ -1,4 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="cliente_action" model="ir.actions.act_window">
+        <field name="name">Action cliente</field>
+        <field name="res_model">U3A2.cliente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="cliente_tree" model="ir.ui.view">
+        <field name="name">cliente.tree</field>
+        <field name="model">U3A2.cliente</field>
+        <field name="arch" type="xml">
+            <tree string="cliente">
+                <field name="name" />
+                <field name="fecha_nacimiento" />
+                <field name="cod_mascota" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="cliente_form" model="ir.ui.view">
+        <field name="name">cliente.form</field>
+        <field name="model">U3A2.cliente</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="fecha_nacimiento" />
+                        <field name="cod_mascota" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="mascota_action" model="ir.actions.act_window">
+        <field name="name">Action mascota</field>
+        <field name="res_model">U3A2.mascota</field>
+        <field name="view_mode">tree,form</field>
+
+    <record id="mascota_tree" model="ir.ui.view">
+        <field name="name">mascota.tree</field>
+        <field name="model">U3A2.mascota</field>
+        <field name="arch" type="xml">
+            <tree string="mascota">
+                <field name="name" />
+                <field name="fecha_nacimiento" />
+                <field name="cod_cliente" />
+            </tree>
+        </field>
+    </record>
+
+    <record id=>mascota_form" model="ir.ui.view">
+        <field name="name">mascota.form</field>
+        <field name="model">U3A2.mascota</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="fecha_nacimiento" />
+                        <field name="cod_cliente" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+    <menuitem
+        id="u3a2"
+        name="Veterinaria"
+        sequence="10" />
+
+    <menuitem 
+        id="cliente_menu"
+        name="Cliente"
+        action="cliente_action"
+        parent="u3a2"
+    />
+
+    <menuitem 
+        id="mascota_menu"
+        name="Mascota"
+        action="mascota_action"
+        parent="u3a2" />
+        
 </odoo>

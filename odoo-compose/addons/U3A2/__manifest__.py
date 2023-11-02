@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "U3A2",
-    'summary': """U3A2""",
+    'name': "veterinaria",
+    'summary': """veterinaria""",
     'description': """
         ejericcio U3A2:
     """,

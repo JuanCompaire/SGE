@@ -3,32 +3,32 @@
 
     <record id="cliente_action" model="ir.actions.act_window">
         <field name="name">Action cliente</field>
-        <field name="res_model">U3A2.cliente</field>
+        <field name="res_model">veterinaria.cliente</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <record id="cliente_tree" model="ir.ui.view">
         <field name="name">cliente.tree</field>
-        <field name="model">U3A2.cliente</field>
+        <field name="model">veterinaria.cliente</field>
         <field name="arch" type="xml">
             <tree string="cliente">
                 <field name="name" />
-                <field name="fecha_nacimiento" />
-                <field name="cod_mascota" />
+                <field name="fecha_inscripcion" />
+                <field name="cod_mascotas" />
             </tree>
         </field>
     </record>
 
     <record id="cliente_form" model="ir.ui.view">
         <field name="name">cliente.form</field>
-        <field name="model">U3A2.cliente</field>
+        <field name="model">veterinaria.cliente</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <field name="name" />
-                        <field name="fecha_nacimiento" />
-                        <field name="cod_mascota" />
+                        <field name="fecha_inscripcion" />
+                        <field name="cod_mascotas" />
                     </group>
                 </sheet>
             </form>
@@ -37,52 +37,54 @@
 
     <record id="mascota_action" model="ir.actions.act_window">
         <field name="name">Action mascota</field>
-        <field name="res_model">U3A2.mascota</field>
+        <field name="res_model">veterinaria.mascota</field>
         <field name="view_mode">tree,form</field>
+    </record>
 
     <record id="mascota_tree" model="ir.ui.view">
         <field name="name">mascota.tree</field>
-        <field name="model">U3A2.mascota</field>
+        <field name="model">veterinaria.mascota</field>
         <field name="arch" type="xml">
             <tree string="mascota">
                 <field name="name" />
-                <field name="fecha_nacimiento" />
+                <field name="tipo" />
                 <field name="cod_cliente" />
             </tree>
         </field>
     </record>
 
-    <record id=>mascota_form" model="ir.ui.view">
+    <record id="mascota_form" model="ir.ui.view">
         <field name="name">mascota.form</field>
-        <field name="model">U3A2.mascota</field>
+        <field name="model">veterinaria.mascota</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <field name="name" />
-                        <field name="fecha_nacimiento" />
+                        <field name="tipo" />
                         <field name="cod_cliente" />
                     </group>
                 </sheet>
             </form>
         </field>
+    </record>
+
 
     <menuitem
-        id="u3a2"
+        id="veterinaria"
         name="Veterinaria"
         sequence="10" />
-
-    <menuitem 
+    
+    <menuitem
         id="cliente_menu"
         name="Cliente"
         action="cliente_action"
-        parent="u3a2"
+        parent="veterinaria"
     />
 
-    <menuitem 
+    <menuitem
         id="mascota_menu"
         name="Mascota"
         action="mascota_action"
-        parent="u3a2" />
-        
+        parent="veterinaria"/>
 </odoo>

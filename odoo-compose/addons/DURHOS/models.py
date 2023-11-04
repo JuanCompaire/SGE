@@ -1,0 +1,21 @@
+from odoo import api, models, fields
+
+class Moneda(models.Model):
+    _name = 'durhos.moneda'
+    cod_moneda = fields.Char( string="codigo", required=True)
+    valor_facial = fields.Float(string="valor facial",required=True)
+    unidad_monetaria = fields.Selection([
+        ('pesetas', 'Pesetas'),
+        ('euros', 'Euros'),
+        ('otras', 'Otras')
+    ], string='Unidad Monetaria', required=True)
+    diametro = fields.Float(string="diametro (mm)")
+    peso = fields.Float(string="peso (gr)")
+    descripcion = fields.Char(string="descripcion")
+    metal_ids = fields.One2many(comodel_name ='durhos.metal', inverse_name ='moneda_id')
+    
+class Metal(models.Model):
+    _name = 'durhos.metal'
+    proporcion = fields.Float(string="proporcion %")
+    ley = fields.Char(string = "ley")
+    moneda_id = fields.Many2one(comodel_name ='durhos.moneda', inverse_name ='metal_ids')

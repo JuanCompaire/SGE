@@ -13,9 +13,25 @@ class Moneda(models.Model):
     peso = fields.Float(string="peso (gr)")
     descripcion = fields.Char(string="descripcion")
     metal_ids = fields.One2many(comodel_name ='durhos.metal', inverse_name ='moneda_id')
+    molde_ids = fields.One2many(comodel_name = 'durhos.molde', inverse_name = 'moneda_id')
     
 class Metal(models.Model):
     _name = 'durhos.metal'
     proporcion = fields.Float(string="proporcion %")
     ley = fields.Char(string = "ley")
     moneda_id = fields.Many2one(comodel_name ='durhos.moneda', inverse_name ='metal_ids')
+    
+class Molde(models.Model):
+    _name = 'durhos.molde'
+    _description = 'Molde para la acuñación de monedas'
+    cod_molde = fields.Char( string="molde", required=True)
+    año_acuñacion = fields.Date( required=True)
+    año_visible = fields.Char(string="año visible del molde")
+    estrella_id = fields.One2many(comodel_name = 'durhos.estrella', inverse_name='molde_id')
+    moneda_id = fields.Many2one (comodel_name = "durhos.moneda", inverse_name ='molde_id')
+    
+class Estrella(models.Model):
+    _name = 'durhos.estrella'
+    _description = 'Estrellas grabadas en el molde'
+    fecha_grabada = fields.Date(string="")
+    molde_id = fields.Many2one(comodel_name = 'durhos.molde', inverse_name='estrella_id')

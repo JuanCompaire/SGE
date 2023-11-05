@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+<!-- MONEDAS-->
     <record id="moneda_action" model="ir.actions.act_window">
         <field name="name">Action moneda</field>
         <field name="res_model">durhos.moneda</field>
@@ -48,7 +48,7 @@
 		<field name="sequence" eval="10"/>
 		<field name="action" ref="moneda_action"/>
 	</record>
-
+<!-- METAL-->
 	<record id="metal_action" model="ir.actions.act_window">
 		<field name="name">Action metal</field>
 		<field name="res_model">durhos.metal</field>
@@ -83,6 +83,89 @@
 		</field>
 	</record>
 
+	<record id="metal_menu" model="ir.ui.menu">
+		<field name="name">Metal</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="metal_action"/>
+	</record>
+<!-- MOLDE-->
+<record id="molde_action" model="ir.actions.act_window">
+		<field name="name">Action molde</field>
+		<field name="res_model">durhos.molde</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="molde_tree" model="ir.ui.view">
+		<field name="name">molde.tree</field>
+		<field name="model">durhos.molde</field>
+		<field name="arch" type="xml">
+			<tree string="Molde">
+				<field name="cod_molde" />
+				<field name="año_acuñacion" />
+				<field name="año_visible"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="molde_form" model="ir.ui.view">
+		<field name="name">molde.form</field>
+		<field name="model">durhos.molde</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="cod_molde" />
+						<field name="año_acuñacion" />
+						<field name="año_visible"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="molde_menu" model="ir.ui.menu">
+		<field name="name">Molde</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="molde_action"/>
+	</record>
+
+<!-- ESTRELLA-->
+<record id="estrella_action" model="ir.actions.act_window">
+		<field name="name">Action estrella</field>
+		<field name="res_model">durhos.estrella</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="estrella_tree" model="ir.ui.view">
+		<field name="name">estrella.tree</field>
+		<field name="model">durhos.estrella</field>
+		<field name="arch" type="xml">
+			<tree string="Estrella">
+				<field name="fecha_grabada" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="estrella_form" model="ir.ui.view">
+		<field name="name">estrella.form</field>
+		<field name="model">durhos.estrella</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="fecha_grabada" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="estrella_menu" model="ir.ui.menu">
+		<field name="name">Estrella</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="estrella_action"/>
+	</record>
+<!-- MENUS-->
 
 	<menuitem
 		id="durhos"
@@ -101,6 +184,20 @@
 		id="metal_menu"
 		name="Metal"
 		action ="metal_action"
+		parent="durhos"	
+	 />
+
+	<menuitem
+		id="molde_menu"
+		name="Molde"
+		action ="molde_action"
+		parent="durhos"	
+	 />
+
+	 <menuitem
+		id="estrella_menu"
+		name="Estrella"
+		action ="estrella_action"
 		parent="durhos"	
 	 />
         

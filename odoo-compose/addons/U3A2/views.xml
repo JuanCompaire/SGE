@@ -12,7 +12,8 @@
         <field name="model">veterinaria.cliente</field>
         <field name="arch" type="xml">
             <tree string="cliente">
-                <field name="name" />
+                <field name="nombre" />
+                <field name="edad" />
                 <field name="fecha_inscripcion" />
                 <field name="cod_mascotas" />
             </tree>
@@ -26,7 +27,8 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name" />
+                        <field name="nombre" />
+                        <field name="edad" />
                         <field name="fecha_inscripcion" />
                         <field name="cod_mascotas" />
                     </group>
@@ -46,7 +48,7 @@
         <field name="model">veterinaria.mascota</field>
         <field name="arch" type="xml">
             <tree string="mascota">
-                <field name="name" />
+                <field name="nombre" />
                 <field name="tipo" />
                 <field name="cod_cliente" />
             </tree>
@@ -60,7 +62,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name" />
+                        <field name="nombre" />
                         <field name="tipo" />
                         <field name="cod_cliente" />
                     </group>

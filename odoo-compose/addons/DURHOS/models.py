@@ -14,6 +14,7 @@ class Moneda(models.Model):
     descripcion = fields.Char(string="descripcion")
     metal_ids = fields.One2many(comodel_name ='durhos.metal', inverse_name ='moneda_id')
     molde_ids = fields.One2many(comodel_name = 'durhos.molde', inverse_name = 'moneda_id')
+    estado_id = fields.One2one(comodel_name = 'durhos.estado_conservacion', inverse_name="moneda_id")
     
 class Metal(models.Model):
     _name = 'durhos.metal'
@@ -35,3 +36,15 @@ class Estrella(models.Model):
     _description = 'Estrellas grabadas en el molde'
     fecha_grabada = fields.Date(string="")
     molde_id = fields.Many2one(comodel_name = 'durhos.molde', inverse_name='estrella_id')
+    
+class Estado_Conservacion(models.Model):
+    _name = 'durhos.estado_conservacion'
+    precio = fields.Float()
+    estado = fields.Selection([
+        ('BC', 'MBC'),
+        ('EBC', 'SC'),
+        
+    ], string='Estado', required=True)
+    nombre = fields.Char()
+    descripcion = fields.Char()
+    moneda_id = fields.One2one (comodel = "durhos.moneda", inverse_name="estado_id")

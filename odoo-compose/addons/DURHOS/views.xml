@@ -165,6 +165,93 @@
 		<field name="sequence" eval="10"/>
 		<field name="action" ref="estrella_action"/>
 	</record>
+<!-- PROVEEDOR-->
+<record id="proveedor_action" model="ir.actions.act_window">
+		<field name="name">Action proveedor</field>
+		<field name="res_model">durhos.proveedor</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="proveedor_tree" model="ir.ui.view">
+		<field name="name">proveedor.tree</field>
+		<field name="model">durhos.proveedor</field>
+		<field name="arch" type="xml">
+			<tree string="Proveedor">
+				<field name="nombre" />
+				<field name="direccion" />
+				<field name="telefono"/>
+				<field name="ejemplar_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="proveedor_form" model="ir.ui.view">
+		<field name="name">proveedor.form</field>
+		<field name="model">durhos.proveedor</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="nombre" />
+						<field name="direccion" />
+						<field name="telefono"/>
+						<field name="ejemplar_id"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="proveedor_menu" model="ir.ui.menu">
+		<field name="name">Proveedor</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="proveedor_action"/>
+	</record>
+	
+<!-- EJEMPLAR-->
+<record id="ejemplar_action" model="ir.actions.act_window">
+		<field name="name">Action ejemplar</field>
+		<field name="res_model">durhos.ejemplar</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="ejemplar_tree" model="ir.ui.view">
+		<field name="name">ejemplar.tree</field>
+		<field name="model">durhos.ejemplar</field>
+		<field name="arch" type="xml">
+			<tree string="Ejemplar">
+				<field name="cod_ejemplar" />
+				<field name="num_correlativo" />
+				<field name="precio"/>
+				<field name="fecha_adquisicion"/>
+				<field name="proveedor_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="ejemplar_form" model="ir.ui.view">
+		<field name="name">ejemplar.form</field>
+		<field name="model">durhos.ejemplar</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="cod_ejemplar" />
+						<field name="num_correlativo" />
+						<field name="precio"/>
+						<field name="fecha_adquisicion"/>
+						<field name="proveedor_id"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="ejemplar_menu" model="ir.ui.menu">
+		<field name="name">Ejemplar</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="ejemplar_action"/>
+	</record>
 <!-- MENUS-->
 
 	<menuitem
@@ -200,5 +287,20 @@
 		action ="estrella_action"
 		parent="durhos"	
 	 />
+
+	 <menuitem
+		id="proveedor_menu"
+		name="Proveedor"
+		action ="proveedor_action"
+		parent="durhos"
+		 />		
+
+	 <menuitem
+		id="ejemplar_menu"
+		name="Ejemplar"
+		action ="ejemplar_action"
+		parent="durhos"
+		 />
+
         
 </odoo>

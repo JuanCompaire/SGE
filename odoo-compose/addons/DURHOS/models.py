@@ -14,7 +14,6 @@ class Moneda(models.Model):
     descripcion = fields.Char(string="descripcion")
     metal_ids = fields.One2many(comodel_name ='durhos.metal', inverse_name ='moneda_id')
     molde_ids = fields.One2many(comodel_name = 'durhos.molde', inverse_name = 'moneda_id')
-    estado_id = fields.One2one(comodel_name = 'durhos.estado_conservacion', inverse_name="moneda_id")
     
 class Metal(models.Model):
     _name = 'durhos.metal'
@@ -47,4 +46,23 @@ class Estado_Conservacion(models.Model):
     ], string='Estado', required=True)
     nombre = fields.Char()
     descripcion = fields.Char()
-    moneda_id = fields.One2one (comodel = "durhos.moneda", inverse_name="estado_id")
+
+
+class Ejemplar_moneda(models.Model):
+    _name = 'durhos.ejemplar'
+    cod_ejemplar = fields.Char(string="codigo", required=True)
+    num_correlativo = fields.Char(string="numero correlativo", required=True)
+    precio = fields.Float(string="precio")
+    fecha_adquisicion = fields.Date(string="fecha de adquisicion")
+    proveedor_id = fields.Many2many(comodel_name='durhos.proveedores', inverse_name='ejemplares_monedas_id')
+
+class Proveedor(models.Model):
+    _name = 'durhos.proveedor'
+    _description = 'Proveedores que pueden adquirir monedas'
+    nombre = fields.Char(string="nombre", required=True)
+    direccion = fields.Char(string="direccion", required=True)
+    telefono = fields.Char(string="telefono", required=True)
+    ejemplar_id = fields.Many2many(comodel_name='durhos.ejemplares_monedas', inverse_name='proveedores_id')
+
+class Cliente(models.Model):
+    _name = 'durhos.cliente'

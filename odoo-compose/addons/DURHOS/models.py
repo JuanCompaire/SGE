@@ -14,6 +14,7 @@ class Moneda(models.Model):
     descripcion = fields.Char(string="descripcion")
     metal_ids = fields.One2many(comodel_name ='durhos.metal', inverse_name ='moneda_id')
     molde_ids = fields.One2many(comodel_name = 'durhos.molde', inverse_name = 'moneda_id')
+    estado_moneda_id = fields.Many2one(comodel_name='durhos.estado_moneda', inverse_name='moneda_id') 
     
 class Metal(models.Model):
     _name = 'durhos.metal'
@@ -36,8 +37,8 @@ class Estrella(models.Model):
     fecha_grabada = fields.Date(string="")
     molde_id = fields.Many2one(comodel_name = 'durhos.molde', inverse_name='estrella_id')
     
-class Estado_Conservacion(models.Model):
-    _name = 'durhos.estado_conservacion'
+class Estado_moneda(models.Model):
+    _name = 'durhos.estado_moneda'
     precio = fields.Float()
     estado = fields.Selection([
         ('BC', 'MBC'),
@@ -46,15 +47,18 @@ class Estado_Conservacion(models.Model):
     ], string='Estado', required=True)
     nombre = fields.Char()
     descripcion = fields.Char()
+    moneda_id = fields.One2many(comodel_name = 'durhos.moneda', inverse_name='estado_moneda_id')
 
 
-class Ejemplar_moneda(models.Model):
+class Ejemplar(models.Model):
     _name = 'durhos.ejemplar'
     cod_ejemplar = fields.Char(string="codigo", required=True)
     num_correlativo = fields.Char(string="numero correlativo", required=True)
     precio = fields.Float(string="precio")
     fecha_adquisicion = fields.Date(string="fecha de adquisicion")
-    proveedor_id = fields.Many2many(comodel_name='durhos.proveedores', inverse_name='ejemplares_monedas_id')
+    proveedor_id = fields.Many2many(comodel_name='durhos.proveedor', inverse_name='ejemplar_id')
+    cliente_id = fields.Many2one(comodel_name='durhos.cliente', inverse_name='ejemplar_id')
+    estado_conservacion_ejemplar_id = fields.Many2one(comodel_name='durhos.estado_conservacion_ejemplar', inverse_name='ejemplar_id')
 
 class Proveedor(models.Model):
     _name = 'durhos.proveedor'
@@ -62,7 +66,22 @@ class Proveedor(models.Model):
     nombre = fields.Char(string="nombre", required=True)
     direccion = fields.Char(string="direccion", required=True)
     telefono = fields.Char(string="telefono", required=True)
-    ejemplar_id = fields.Many2many(comodel_name='durhos.ejemplares_monedas', inverse_name='proveedores_id')
+    ejemplar_id = fields.Many2many(comodel_name='durhos.ejemplar', inverse_name='proveedor_id')
 
 class Cliente(models.Model):
     _name = 'durhos.cliente'
+    _description = 'Clientes que pueden adquirir monedas'
+    fecha = fields.Date(string="fecha", required=True)
+    precio_venta = fields.Float(string="precio de venta", required=True)
+    nombre_cliente = fields.Char(string="nombre del cliente", required=True)
+    telefono = fields.Char(string="telefono", required=True)
+    num_compras_realizadas = fields.Integer(string="numero de compras realizadas", required=True)
+    ejemplar_id = fields.One2many(comodel_name='durhos.ejemplar', inverse_name='cliente_id')    
+
+class Estado_Conservacion_Ejemplar(models.Model):
+    _name = 'durhos.estado_conservacion_ejemplar'
+    ajuste = fields.Selection([
+        ('+', '-'),
+    ], string='Unidad Monetaria', required=True)
+    comentario = fields.Char(string="comentario")
+    ejemplar_id = fields.One2many(comodel_name='durhos.ejemplar', inverse_name='estado_conservacion_ejemplar_id')

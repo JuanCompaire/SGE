@@ -58,7 +58,7 @@ class Ejemplar(models.Model):
     fecha_adquisicion = fields.Date(string="fecha de adquisicion")
     proveedor_id = fields.Many2many(comodel_name='durhos.proveedor', inverse_name='ejemplar_id')
     cliente_id = fields.Many2one(comodel_name='durhos.cliente', inverse_name='ejemplar_id')
-    estado_conservacion_ejemplar_id = fields.Many2one(comodel_name='durhos.estado_conservacion_ejemplar', inverse_name='ejemplar_id')
+    estado_conservacion_ejemplar_id = fields.Many2one(comodel_name='durhos.estado_ejemplar', inverse_name='ejemplar_id')
 
 class Proveedor(models.Model):
     _name = 'durhos.proveedor'
@@ -78,8 +78,8 @@ class Cliente(models.Model):
     num_compras_realizadas = fields.Integer(string="numero de compras realizadas", required=True)
     ejemplar_id = fields.One2many(comodel_name='durhos.ejemplar', inverse_name='cliente_id')    
 
-class Estado_Conservacion_Ejemplar(models.Model):
-    _name = 'durhos.estado_conservacion_ejemplar'
+class Estado_ejemplar(models.Model):
+    _name = 'durhos.estado_ejemplar'
     ajuste = fields.Selection([
         ('+', '-'),
     ], string='Unidad Monetaria', required=True)

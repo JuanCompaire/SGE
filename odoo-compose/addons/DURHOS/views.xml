@@ -103,6 +103,8 @@
 				<field name="cod_molde" />
 				<field name="año_acuñacion" />
 				<field name="año_visible"/>
+				<field name="estrella_id"/>
+				<field name="moneda_id"/>
 			</tree>
 		</field>
 	</record>
@@ -117,6 +119,8 @@
 						<field name="cod_molde" />
 						<field name="año_acuñacion" />
 						<field name="año_visible"/>
+						<field name="estrella_id"/>
+						<field name="moneda_id"/>
 					</group>
 				</sheet>
 			</form>
@@ -142,6 +146,7 @@
 		<field name="arch" type="xml">
 			<tree string="Estrella">
 				<field name="fecha_grabada" />
+				<field name="molde_id" />
 			</tree>
 		</field>
 	</record>
@@ -154,6 +159,7 @@
 				<sheet>
 					<group>
 						<field name="fecha_grabada" />
+						<field name="molde_id" />
 					</group>
 				</sheet>
 			</form>
@@ -345,6 +351,45 @@
 
 <!-- ESTADO CONSEVACION EJEMPLAR-->
 
+<record id="estado_ejemplar_action" model="ir.actions.act_window">
+		<field name="name">Action estado_ejemplar</field>
+		<field name="res_model">durhos.estado_ejemplar</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="estado_ejemplar_tree" model="ir.ui.view">
+		<field name="name">estado_ejemplar.tree</field>
+		<field name="model">durhos.estado_ejemplar</field>
+		<field name="arch" type="xml">
+			<tree string="estado_ejemplar">
+				<field name="ajuste" />
+				<field name="comentario" />
+				<field name="ejemplar_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="estado_ejemplar_form" model="ir.ui.view">
+		<field name="name">estado_ejemplar.form</field>
+		<field name="model">durhos.estado_ejemplar</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="ajuste" />
+						<field name="comentario" />
+						<field name="ejemplar_id" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="estado_ejemplar_menu" model="ir.ui.menu">
+		<field name="name">estado_ejemplar</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="estado_ejemplar_action"/>
+	</record>
 
 <!-- MENUS-->
 
@@ -411,6 +456,12 @@
 		parent="durhos"
 		 />
 	 
+	<menuitem
+		id="estado_ejemplar_menu"
+		name="Estado Conservacion Ejemplar"
+		action ="estado_ejemplar_action"
+		parent="durhos"
+		 />
 
         
 </odoo>

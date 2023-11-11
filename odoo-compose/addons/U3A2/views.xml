@@ -37,6 +37,12 @@
         </field>
     </record>
 
+    <record id="cliente_menu" model="ir.ui.menu">
+        <field name="name">Cliente</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="cliente_action"/>
+    </record>
+
     <record id="mascota_action" model="ir.actions.act_window">
         <field name="name">Action mascota</field>
         <field name="res_model">veterinaria.mascota</field>
@@ -69,6 +75,12 @@
                 </sheet>
             </form>
         </field>
+    </record>
+
+    <record id="mascota_menu" model="ir.ui.menu">
+        <field name="name">Mascota</field>
+		<field name="sequence" eval="10"/>
+		<field name="action" ref="mascota_action"/>
     </record>
 
     <menuitem

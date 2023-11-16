@@ -26,8 +26,8 @@ class Molde(models.Model):
     _name = 'durhos.molde'
     _description = 'Molde para la acuñación de monedas'
     cod_molde = fields.Char( string="molde", required=True)
-    año_acuñacion = fields.Date( required=True)
-    año_visible = fields.Char(string="año visible del molde")
+    ano_acunacion = fields.Date( required=True)
+    ano_visible = fields.Char(string="año visible del molde")
     estrella_id = fields.One2many(comodel_name = 'durhos.estrella', inverse_name='molde_id')
     moneda_id = fields.Many2one (comodel_name = "durhos.moneda", inverse_name ='molde_id')
     

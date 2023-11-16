@@ -101,8 +101,8 @@
 		<field name="arch" type="xml">
 			<tree string="Molde">
 				<field name="cod_molde" />
-				<field name="año_acuñacion" />
-				<field name="año_visible"/>
+				<field name="ano_acunacion" />
+				<field name="ano_visible"/>
 				<field name="estrella_id"/>
 				<field name="moneda_id"/>
 			</tree>
@@ -117,8 +117,8 @@
 				<sheet>
 					<group>
 						<field name="cod_molde" />
-						<field name="año_acuñacion" />
-						<field name="año_visible"/>
+						<field name="ano_acunacion" />
+						<field name="ano_visible"/>
 						<field name="estrella_id"/>
 						<field name="moneda_id"/>
 					</group>

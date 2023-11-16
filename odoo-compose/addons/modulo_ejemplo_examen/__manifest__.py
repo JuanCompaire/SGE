@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ejemplo_examen",
-    'summary': """ejemplo de examen""",
+    'name': "Final Fantasy",
+    'summary': """Final fantasy module""",
     'description': """
         ejemplo de examen:
             - Shinra

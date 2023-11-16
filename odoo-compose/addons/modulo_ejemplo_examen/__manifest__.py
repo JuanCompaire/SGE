@@ -3,13 +3,7 @@
     'name': "Final Fantasy",
     'summary': """Final fantasy module""",
     'description': """
-        ejemplo de examen:
-            - Shinra
-            - Turcos
-            - Soldado
-            - Armas
-            - Materias
-            -Avalancha
+        modulo intento
     """,
     'author': "Juan Compairé",
     'website': "http://www.salesuanos.edu",

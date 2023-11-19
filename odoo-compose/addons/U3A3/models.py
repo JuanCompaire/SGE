@@ -1,6 +1,7 @@
 from odoo import api, models, fields
 
 class Cliente(models.Model):
+    _inherit = 'basemodulo.empresa'
     _name = 'veterinaria.cliente'
     nombre = fields.Char()
     fecha_inscripcion = fields.Date(required=True)
@@ -24,6 +25,7 @@ class Cliente(models.Model):
             return 0  
 
 class Mascota(models.Model):
+    _inherit = 'basemodulo.entidad'
     _name = 'veterinaria.mascota'
     nombre = fields.Char()
     tipo = fields.Char()

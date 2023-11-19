@@ -160,6 +160,61 @@
 	</field>
 </record>
 
+<record id="avalancha_action" model="ir.actions.act_window">
+	<field name="name">Avalancha</field>
+	<field name="res_model">finalfantasy.avalancha</field>
+	<field name="view_mode">tree,form,calendar</field>
+</record>
+
+<record id="avalancha_tree" model="ir.ui.view">
+	<field name="name">avalancha.tree</field>
+	<field name="model">finalfantasy.avalancha</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>
+			<field name="arma_id"/>
+			<field name="antiguo_soldado"/>
+			<field name="num_misiones"/>
+			<field name="en_reserva"/>
+			<field name="fecha_entrada_reserva"/>
+		</tree>
+	</field>
+</record>
+
+<record id="avalancha_form" model="ir.ui.view">
+	<field name="name">avalancha.form</field>
+	<field name="model">finalfantasy.avalancha</field>
+	<field name="arch" type="xml">
+		<form>
+			<sheet>
+				<group>
+					<field name="name"/>
+					<field name="arma_id"/>
+					<field name="antiguo_soldado"/>
+					<field name="num_misiones"/>
+					<field name="en_reserva"/>
+					<field name="fecha_entrada_reserva"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="avalancha_calendar" model="ir.ui.view">
+	<field name="name">avalancha.calendar</field>
+	<field name="model">finalfantasy.avalancha</field>
+	<field name="arch" type="xml">
+		<calendar string="Avalancha" date_start="fecha_entrada_reserva">
+			<field name="name"/>
+		</calendar>
+	</field>
+</record>
+
+
+
+
+
+
 <record id="materia_action" model="ir.actions.act_window">
 	<field name="name">Materia</field>
 	<field name="res_model">finalfantasy.materia</field>
@@ -237,6 +292,13 @@
 	name="Materia"
 	parent="finalfantasy"
 	action="materia_action"
+	/>
+
+<menuitem
+	id="avalancha_menu"
+	name="Avalancha"
+	parent="finalfantasy"
+	action="avalancha_action"
 	/>
         
 </odoo>

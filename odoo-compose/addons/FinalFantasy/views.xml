@@ -43,6 +43,161 @@
 	</field>
 </record>
 
+<record id="turco_action" model="ir.actions.act_window">
+	<field name="name">Turco</field>
+	<field name="res_model">finalfantasy.turco</field>
+	<field name="view_mode">tree,form,calendar</field>
+</record>
+
+<record id="turco_tree" model="ir.ui.view">
+	<field name="name">turco.tree</field>
+	<field name="model">finalfantasy.turco</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>
+			<field name="fecha_nacimiento"/>
+			<field name="rango"/>
+		</tree>
+	</field>
+</record>
+
+<record id="turco_form" model="ir.ui.view">
+	<field name="name">turco.form</field>
+	<field name="model">finalfantasy.turco</field>
+	<field name="arch" type="xml">
+		<form>
+			<sheet>
+				<group>
+					<field name="name"/>
+					<field name="fecha_nacimiento"/>
+					<field name="rango"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="turco_calendar" model="ir.ui.view">
+	<field name="name">turco.calendar</field>
+	<field name="model">finalfantasy.turco</field>
+	<field name="arch" type="xml">
+		<calendar string="Turco" date_start="fecha_nacimiento">
+			<field name="name"/>
+			
+		</calendar>
+	</field>
+</record>
+
+<record id="soldado_action" model="ir.actions.act_window">
+	<field name="name">Soldado</field>
+	<field name="res_model">finalfantasy.soldado</field>
+	<field name="view_mode">tree,form</field>
+</record>
+
+<record id="soldado_tree" model="ir.ui.view">
+	<field name="name">soldado.tree</field>
+	<field name="model">finalfantasy.soldado</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="fecha_nacimiento"/>
+			<field name="clase"/>
+			<field name="arma_id"/>
+		</tree>
+	</field>
+</record>
+
+<record id="soldado_form" model="ir.ui.view">
+	<field name="name">soldado.form</field>
+	<field name="model">finalfantasy.soldado</field>
+	<field name="arch" type="xml">
+		<form>
+			<sheet>
+				<group>
+					<field name="fecha_nacimiento"/>
+					<field name="clase"/>
+					<field name="arma_id"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="arma_action" model="ir.actions.act_window">
+	<field name="name">Arma</field>
+	<field name="res_model">finalfantasy.arma</field>
+	<field name="view_mode">tree,form</field>
+</record>
+
+<record id="arma_tree" model="ir.ui.view">
+	<field name="name">arma.tree</field>
+	<field name="model">finalfantasy.arma</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>
+			<field name="material_fabricacion"/>
+			<field name="numero_ranuras_materia"/>
+			<field name="soldado_id"/>
+			<field name="materia_id"/>
+		</tree>
+	</field>
+</record>
+
+<record id="arma_form" model="ir.ui.view">
+	<field name="name">arma.form</field>
+	<field name="model">finalfantasy.arma</field>
+	<field name="arch" type="xml">
+		<form>
+			<sheet>
+				<group>
+					<field name="name"/>
+					<field name="material_fabricacion"/>
+					<field name="numero_ranuras_materia"/>
+					<field name="soldado_id"/>
+					<field name="materia_id"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+<record id="materia_action" model="ir.actions.act_window">
+	<field name="name">Materia</field>
+	<field name="res_model">finalfantasy.materia</field>
+	<field name="view_mode">tree,form</field>
+</record>
+
+<record id="materia_tree" model="ir.ui.view">
+	<field name="name">materia.tree</field>
+	<field name="model">finalfantasy.materia</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>
+			<field name="tipo"/>
+			<field name="numero_ranuras"/>
+			<field name="arma_id"/>
+		</tree>
+	</field>
+</record>
+
+<record id="materia_form" model="ir.ui.view">
+	<field name="name">materia.form</field>
+	<field name="model">finalfantasy.materia</field>
+	<field name="arch" type="xml">
+		<form>
+			<sheet>
+				<group>
+					<field name="name"/>
+					<field name="tipo"/>
+					<field name="numero_ranuras"/>
+					<field name="arma_id"/>
+				</group>
+			</sheet>
+		</form>
+	</field>
+</record>
+
+
+
 <menuitem
 	id="finalfantasy"
 	name="Final Fantasy"
@@ -56,5 +211,32 @@
 	action="shinra_action"
 	/>
 
+<menuitem
+	id="turco_menu"
+	name="Turco"
+	parent="finalfantasy"
+	action="turco_action"
+	/>
+
+<menuitem
+	id="soldado_menu"
+	name="Soldado"
+	parent="finalfantasy"
+	action="soldado_action"
+	/>
+
+<menuitem
+	id="arma_menu"
+	name="Arma"
+	parent="finalfantasy"
+	action="arma_action"
+	/>
+
+<menuitem
+	id="materia_menu"
+	name="Materia"
+	parent="finalfantasy"
+	action="materia_action"
+	/>
         
 </odoo>

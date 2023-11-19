@@ -31,9 +31,3 @@ class Mascota(models.Model):
     tipo = fields.Char()
     cod_cliente = fields.Many2one(comodel_name='veterinaria.cliente', inverse_name='cod_mascotas')
     
-class Clientevip(Cliente):
-    _name = 'veterinaria.clientevip'
-    
-    def _vip(self):
-        
-        print("¡Cliente VIP!")

@@ -23,6 +23,9 @@ class Soldado(models.Model):
         ('Segunda', 'segunda')        
         ], string="Clase")
     arma_id = fields.Many2one(comodel_name='finalfantasy.arma', inverse_name='soldado_id', string="Arma")
+    indice_locura = fields.Integer(string="Índice de locura")
+
+
     
 class Arma(models.Model):
     _name = 'finalfantasy.arma'
@@ -31,8 +34,10 @@ class Arma(models.Model):
     material_fabricacion = fields.Char(string="Material de fabricación")
     numero_ranuras_materia = fields.Integer(string="Número de ranuras de materia")
     soldado_id = fields.One2many(comodel_name='finalfantasy.soldado', inverse_name='arma_id')
-    materia_id = fields.One2many(comodel_name='finalfantasy.materia', inverse_name='arma_id', string="Materia")
+    materia_id = fields.Many2many(comodel_name='finalfantasy.materia', inverse_name='arma_id', string="Materia")
     avalancha_id = fields.One2many(comodel_name='finalfantasy.avalancha', inverse_name='arma_id', string="Avalancha")
+
+   
 
 class Materia(models.Model):
     _name = 'finalfantasy.materia'
@@ -44,7 +49,7 @@ class Materia(models.Model):
         ('Apoyo', 'apoyo'),
         ], string="Tipo")
     numero_ranuras = fields.Integer(string="Número de ranuras")
-    arma_id = fields.Many2one(comodel_name='finalfantasy.arma', inverse_name='materia_id', string="Arma")
+    arma_id = fields.Many2many(comodel_name='finalfantasy.arma', inverse_name='materia_id', string="Arma")
 
 class Avalancha(models.Model):
     _name = 'finalfantasy.avalancha'

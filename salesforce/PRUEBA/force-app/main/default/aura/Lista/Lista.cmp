@@ -1,0 +1,14 @@
+<aura:component>
+    <h1>Lista de combinacion</h1>
+    <aura:handler event="c:evtData" action="{!c.addToList}"/>
+    <aura:attribute name="lista" type="String[]" default="[]"/>
+    <table>
+        <tr>
+            <aura:iteration items="{!v.lista}" var="item">
+                <td>{!item}</td>
+            </aura:iteration>
+        </tr>
+    </table>
+    <input type="button" name="delete" id="delete" onclick="{!c.clearList}" value="Limpiar" />
+</aura:component>
+

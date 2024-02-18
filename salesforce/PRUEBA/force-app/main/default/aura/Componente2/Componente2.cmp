@@ -1,0 +1,8 @@
+<aura:component>
+    <input type="button" name="Grabar" id="Grabar" onclick="{!c.recordNums}" />
+    <input type="button" name="Stop" id="Stop" onclick="{!c.stopNums}" />
+    <input type="button" name="Play" id="Play" onclick="{!c.playNums}" />
+    <input type="button" name="Save" id="Save" onclick="{!c.saveNums}" />
+
+
+</aura:component>	
